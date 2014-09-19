@@ -1,6 +1,6 @@
 {
     "name": "eye4web/eye4web-zf2-board-abac",
-    "description": "Integration between Eye4web\Zf2Board and \Eye4web\Zf2Abac",
+    "description": "Integration between Eye4web\\Zf2Board and \\Eye4web\\Zf2Abac",
     "type": "library",
     "license": "MIT",
     "keywords": [
