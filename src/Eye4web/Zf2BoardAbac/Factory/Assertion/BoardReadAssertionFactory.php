@@ -2,17 +2,17 @@
 
 namespace Eye4web\Zf2BoardAbac\Factory\Assertion;
 
-use Eye4web\Zf2BoardAbac\Assertion\PageViewAssertion;
+use Eye4web\Zf2BoardAbac\Assertion\TopicWriteAssertion;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class PageViewAssertionFactory implements FactoryInterface
+class BoardReadAssertionFactory implements FactoryInterface
 {
     /**
      * Create Assertion
      *
      * @param ServiceLocatorInterface $assertionPluginManager
-     * @return PageViewAssertion|mixed
+     * @return TopicWriteAssertion|mixed
      */
     public function createService (ServiceLocatorInterface $assertionPluginManager)
     {
@@ -22,6 +22,6 @@ class PageViewAssertionFactory implements FactoryInterface
         /** @var \Eye4web\Zf2Abac\Provider\DoctrineORMProvider $provider */
         $provider = $serviceLocator->get('Eye4web\Zf2Abac\Provider\DoctrineORMProvider');
 
-        return new PageViewAssertion($provider);
+        return new TopicWriteAssertion($provider);
     }
 }

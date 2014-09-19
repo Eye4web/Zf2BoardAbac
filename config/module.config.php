@@ -21,7 +21,14 @@ return [
     'eye4web_abac' => [
         'assertion_manager' => [
             'factories' => [
-                'page.view' => 'Eye4web\Zf2BoardAbac\Factory\Assertion\PageViewAssertionFactory',
+                'board.read' => 'Eye4web\Zf2BoardAbac\Factory\Assertion\BoardReadAssertionFactory',
+
+                'topic.read' => 'Eye4web\Zf2BoardAbac\Factory\Assertion\TopicReadAssertionFactory',
+                'topic.write' => 'Eye4web\Zf2BoardAbac\Factory\Assertion\TopicWriteAssertionFactory',
+
+                'post.write' => 'Eye4web\Zf2BoardAbac\Factory\Assertion\PostWriteAssertionFactory',
+                'post.edit' => 'Eye4web\Zf2BoardAbac\Factory\Assertion\PostEditAssertionFactory',
+                'post.delete' => 'Eye4web\Zf2BoardAbac\Factory\Assertion\PostDeleteAssertionFactory',
             ]
         ]
     ],

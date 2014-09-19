@@ -7,7 +7,7 @@ use Eye4web\Zf2Abac\Provider\ProviderInterface;
 use Eye4web\Zf2Abac\Exception;
 use Zend\Validator\ValidatorPluginManager;
 
-class PageViewAssertion implements AssertionInterface
+class BaseAssertion implements AssertionInterface
 {
     /** @var ProviderInterface */
     protected $provider;
@@ -25,7 +25,7 @@ class PageViewAssertion implements AssertionInterface
      */
     public function hasPermission($value, array $attributes)
     {
-        $permissionGroups = $this->provider->getPermissions('page', $value);
+        $permissionGroups = $this->provider->getPermissions('topic.write', $value);
 
         if (!count($permissionGroups)) {
             return true;

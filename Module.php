@@ -38,16 +38,91 @@ class Module implements ConfigProviderInterface
         /** @var \Eye4web\Zf2Abac\Service\AuthorizationService $authorizationService */
         $authorizationService = $serviceManager->get('Eye4web\Zf2Abac\Service\AuthorizationService');
 
-        $eventManager->attach('Eye4web\Zf2Board\Controller\BoardController', 'page.view', function($e) use ($authorizationService, $mvcEvent) {
+        // Bind event to read topic
+        $eventManager->attach('Eye4web\Zf2Board\Controller\BoardController', 'board.read', function($e) use ($authorizationService, $mvcEvent) {
             $params = $e->getParams();
-
             $attributes = [];
 
             if (isset($params['attributes'])) {
                 $attributes = $params['attributes'];
             }
 
-            if (!$authorizationService->hasPermission('page.view', $params['page'], $attributes)) {
+            if (!$authorizationService->hasPermission('board.read', null, $attributes)) {
+                $viewModel = $params['view'];
+                $viewModel->setTemplate('error/403');
+            }
+        });
+
+        // Bind event to read topic
+        $eventManager->attach('Eye4web\Zf2Board\Controller\BoardController', 'topic.read', function($e) use ($authorizationService, $mvcEvent) {
+            $params = $e->getParams();
+            $attributes = [];
+
+            if (isset($params['attributes'])) {
+                $attributes = $params['attributes'];
+            }
+
+            if (!$authorizationService->hasPermission('topic.read', null, $attributes)) {
+                $viewModel = $params['view'];
+                $viewModel->setTemplate('error/403');
+            }
+        });
+
+        // Bind event to write topic
+        $eventManager->attach('Eye4web\Zf2Board\Controller\BoardController', 'topic.write', function($e) use ($authorizationService, $mvcEvent) {
+            $params = $e->getParams();
+            $attributes = [];
+
+            if (isset($params['attributes'])) {
+                $attributes = $params['attributes'];
+            }
+
+            if (!$authorizationService->hasPermission('topic.write', null, $attributes)) {
+                $viewModel = $params['view'];
+                $viewModel->setTemplate('error/403');
+            }
+        });
+
+        // Bind event to write post
+        $eventManager->attach('Eye4web\Zf2Board\Controller\BoardController', 'post.write', function($e) use ($authorizationService, $mvcEvent) {
+            $params = $e->getParams();
+            $attributes = [];
+
+            if (isset($params['attributes'])) {
+                $attributes = $params['attributes'];
+            }
+
+            if (!$authorizationService->hasPermission('post.write', null, $attributes)) {
+                $viewModel = $params['view'];
+                $viewModel->setTemplate('error/403');
+            }
+        });
+
+        // Bind event to edit post
+        $eventManager->attach('Eye4web\Zf2Board\Controller\BoardController', 'post.edit', function($e) use ($authorizationService, $mvcEvent) {
+            $params = $e->getParams();
+            $attributes = [];
+
+            if (isset($params['attributes'])) {
+                $attributes = $params['attributes'];
+            }
+
+            if (!$authorizationService->hasPermission('post.write', null, $attributes)) {
+                $viewModel = $params['view'];
+                $viewModel->setTemplate('error/403');
+            }
+        });
+
+        // Bind event to delete post
+        $eventManager->attach('Eye4web\Zf2Board\Controller\BoardController', 'post.delete', function($e) use ($authorizationService, $mvcEvent) {
+            $params = $e->getParams();
+            $attributes = [];
+
+            if (isset($params['attributes'])) {
+                $attributes = $params['attributes'];
+            }
+
+            if (!$authorizationService->hasPermission('post.write', null, $attributes)) {
                 $viewModel = $params['view'];
                 $viewModel->setTemplate('error/403');
             }
