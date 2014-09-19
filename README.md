@@ -51,3 +51,8 @@ You are now able to use the assertions:
 * post.write
 * post.edit
 * post.delete
+
+Dependencies
+------------
+
+[Eye4web\Zf2Abac](https://github.com/Eye4web/Eye4webZf2Abac)
