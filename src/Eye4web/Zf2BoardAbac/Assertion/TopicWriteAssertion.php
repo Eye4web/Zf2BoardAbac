@@ -8,4 +8,5 @@ use Zend\Validator\ValidatorPluginManager;
 
 class TopicWriteAssertion extends BaseAssertion
 {
+    protected $permissionName = 'topic.write';
 }

@@ -8,4 +8,5 @@ use Zend\Validator\ValidatorPluginManager;
 
 class PostDeleteAssertion extends BaseAssertion
 {
+    protected $permissionName = 'post.delete';
 }

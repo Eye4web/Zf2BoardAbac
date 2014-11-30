@@ -2,7 +2,7 @@
 
 namespace Eye4web\Zf2BoardAbac\Factory\Assertion;
 
-use Eye4web\Zf2BoardAbac\Assertion\PostEditAssertion;
+use Eye4web\Zf2BoardAbac\Assertion\PostDeleteAssertion;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -12,7 +12,7 @@ class PostDeleteAssertionFactory implements FactoryInterface
      * Create Assertion
      *
      * @param ServiceLocatorInterface $assertionPluginManager
-     * @return PostEditAssertion|mixed
+     * @return PostDeleteAssertion|mixed
      */
     public function createService (ServiceLocatorInterface $assertionPluginManager)
     {
@@ -22,6 +22,6 @@ class PostDeleteAssertionFactory implements FactoryInterface
         /** @var \Eye4web\Zf2Abac\Provider\DoctrineORMProvider $provider */
         $provider = $serviceLocator->get('Eye4web\Zf2Abac\Provider\DoctrineORMProvider');
 
-        return new PostEditAssertion($provider);
+        return new PostDeleteAssertion($provider);
     }
 }

@@ -12,6 +12,8 @@ class BaseAssertion implements AssertionInterface
     /** @var ProviderInterface */
     protected $provider;
 
+    protected $permissionName = false;
+
     public function __construct(ProviderInterface $provider)
     {
         $this->provider = $provider;
@@ -25,7 +27,11 @@ class BaseAssertion implements AssertionInterface
      */
     public function hasPermission($value, array $attributes)
     {
-        $permissionGroups = $this->provider->getPermissions('topic.write', $value);
+        if (!$this->permissionName || empty($this->permissionName)) {
+            throw new \Exception('Please provide a permission name');
+        }
+
+        $permissionGroups = $this->provider->getPermissions($this->permissionName, $value);
 
         if (!count($permissionGroups)) {
             return true;
@@ -34,10 +40,7 @@ class BaseAssertion implements AssertionInterface
         foreach ($permissionGroups as $group) {
             foreach ($group as $permission) {
                 if (!isset($attributes[$permission->getValueId()])) {
-                    throw new Exception\RuntimeException(sprintf(
-                        'No value set for permission with id %s',
-                        $permission->getId()
-                    ));
+                    return false;
                 }
 
                 $validator = $this->provider->getValidator($permission);

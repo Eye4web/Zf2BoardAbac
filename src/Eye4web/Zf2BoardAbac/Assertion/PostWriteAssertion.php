@@ -8,4 +8,5 @@ use Zend\Validator\ValidatorPluginManager;
 
 class PostWriteAssertion extends BaseAssertion
 {
+    protected $permissionName = 'post.write';
 }

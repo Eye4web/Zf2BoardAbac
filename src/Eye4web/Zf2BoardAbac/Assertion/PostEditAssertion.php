@@ -8,4 +8,5 @@ use Zend\Validator\ValidatorPluginManager;
 
 class PostEditAssertion extends BaseAssertion
 {
+    protected $permissionName = 'post.edit';
 }

@@ -8,4 +8,5 @@ use Zend\Validator\ValidatorPluginManager;
 
 class TopicReadAssertion extends BaseAssertion
 {
+    protected $permissionName = 'topic.read';
 }
