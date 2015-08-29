@@ -40,17 +40,20 @@ class BaseAssertion implements AssertionInterface
         foreach ($permissionGroups as $group) {
             foreach ($group as $permission) {
                 if (!isset($attributes[$permission->getValueId()])) {
-                    return false;
+                    continue;
                 }
 
                 $validator = $this->provider->getValidator($permission);
 
                 if (!$validator->isValid($attributes[$permission->getValueId()])) {
-                    return false;
+                    break 2;
                 }
             }
+
+            // if we reach this, all rules in this group have passed, so we are allowed
+            return true;
         }
 
-        return true;
+        return false;
     }
 }
