@@ -18,8 +18,9 @@
 
 namespace Eye4web\Zf2BoardAbac;
 
+use Eye4web\Zf2Abac\Service\AuthorizationService;
+use Zend\EventManager\EventManager;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\ModuleManager\ModuleManager;
 use Zend\Mvc\MvcEvent;
 
 class Module implements ConfigProviderInterface

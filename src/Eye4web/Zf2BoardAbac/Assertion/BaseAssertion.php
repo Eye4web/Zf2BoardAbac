@@ -46,13 +46,11 @@ class BaseAssertion implements AssertionInterface
                 $validator = $this->provider->getValidator($permission);
 
                 if (!$validator->isValid($attributes[$permission->getValueId()])) {
-                    break;
+                    return false;
                 }
-
-                return true;
             }
         }
 
-        return false;
+        return true;
     }
 }
