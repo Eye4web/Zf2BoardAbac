@@ -16,9 +16,9 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "zendframework/zendframework": "~2.3|~3.0",
-        "eye4web/eye4web-zf2-abac": "dev-master"
+        "php": ">=7.2",
+        "zendframework/zend-mvc": "^3.0",
+        "eye4web/eye4web-zf2-abac": "dev-zf3"
     },
     "autoload": {
         "psr-0": {
