@@ -6,7 +6,7 @@ use Eye4web\Zf2BoardAbac\Assertion\TopicWriteAssertion;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class TopicWriteAssertionFactory implements FactoryInterface
+class TopicWriteAssertionFactory implements \Zend\ServiceManager\Factory\FactoryInterface
 {
     /**
      * Create Assertion
@@ -14,10 +14,10 @@ class TopicWriteAssertionFactory implements FactoryInterface
      * @param ServiceLocatorInterface $assertionPluginManager
      * @return TopicWriteAssertion|mixed
      */
-    public function createService (ServiceLocatorInterface $assertionPluginManager)
+    public function __invoke(\Interop\Container\ContainerInterface $assertionPluginManager, $requestedName, array $options = null)
     {
         /** @var ServiceLocatorInterface $serviceLocator */
-        $serviceLocator = $assertionPluginManager->getServiceLocator();
+        $serviceLocator = $assertionPluginManager;
 
         /** @var \Eye4web\Zf2Abac\Provider\DoctrineORMProvider $provider */
         $provider = $serviceLocator->get('Eye4web\Zf2Abac\Provider\DoctrineORMProvider');
