@@ -14,7 +14,7 @@ class BoardReadAssertionFactory implements \Zend\ServiceManager\Factory\FactoryI
      * @param ServiceLocatorInterface $assertionPluginManager
      * @return BoardReadAssertion|mixed
      */
-    public function __invoke(\Interop\Container\ContainerInterface $assertionPluginManager, $requestedName, array $options = null)
+    public function __invoke(\Psr\Container\ContainerInterface $assertionPluginManager, $requestedName, array $options = null)
     {
         /** @var ServiceLocatorInterface $serviceLocator */
         $serviceLocator = $assertionPluginManager;
