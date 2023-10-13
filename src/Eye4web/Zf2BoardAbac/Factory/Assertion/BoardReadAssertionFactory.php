@@ -3,10 +3,10 @@
 namespace Eye4web\Zf2BoardAbac\Factory\Assertion;
 
 use Eye4web\Zf2BoardAbac\Assertion\BoardReadAssertion;
-use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class BoardReadAssertionFactory implements FactoryInterface
+class BoardReadAssertionFactory implements \Zend\ServiceManager\Factory\FactoryInterface
 {
     /**
      * Create Assertion
@@ -14,10 +14,10 @@ class BoardReadAssertionFactory implements FactoryInterface
      * @param ServiceLocatorInterface $assertionPluginManager
      * @return BoardReadAssertion|mixed
      */
-    public function createService (ServiceLocatorInterface $assertionPluginManager)
+    public function __invoke(\Psr\Container\ContainerInterface $assertionPluginManager, $requestedName, array $options = null)
     {
         /** @var ServiceLocatorInterface $serviceLocator */
-        $serviceLocator = $assertionPluginManager->getServiceLocator();
+        $serviceLocator = $assertionPluginManager;
 
         /** @var \Eye4web\Zf2Abac\Provider\DoctrineORMProvider $provider */
         $provider = $serviceLocator->get('Eye4web\Zf2Abac\Provider\DoctrineORMProvider');

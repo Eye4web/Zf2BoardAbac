@@ -6,7 +6,7 @@ use Eye4web\Zf2BoardAbac\Assertion\PostDeleteAssertion;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class PostDeleteAssertionFactory implements FactoryInterface
+class PostDeleteAssertionFactory implements \Zend\ServiceManager\Factory\FactoryInterface
 {
     /**
      * Create Assertion
@@ -14,10 +14,10 @@ class PostDeleteAssertionFactory implements FactoryInterface
      * @param ServiceLocatorInterface $assertionPluginManager
      * @return PostDeleteAssertion|mixed
      */
-    public function createService (ServiceLocatorInterface $assertionPluginManager)
+    public function __invoke(\Psr\Container\ContainerInterface $assertionPluginManager, $requestedName, array $options = null)
     {
         /** @var ServiceLocatorInterface $serviceLocator */
-        $serviceLocator = $assertionPluginManager->getServiceLocator();
+        $serviceLocator = $assertionPluginManager;
 
         /** @var \Eye4web\Zf2Abac\Provider\DoctrineORMProvider $provider */
         $provider = $serviceLocator->get('Eye4web\Zf2Abac\Provider\DoctrineORMProvider');
